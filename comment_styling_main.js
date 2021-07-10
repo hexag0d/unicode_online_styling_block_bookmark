@@ -8,6 +8,11 @@ javascript: var _i = false; var _b = false; var _u = false; var t = document.get
         return window.getSelection().focusNode;
     }
 
+    var _resetCommentValues = function () {
+            _i = false; _b = false; _u = false;
+
+    }
+
     var _toggleItalics = function () {
         _i = !_i;
         if (_i) {
@@ -44,24 +49,42 @@ javascript: var _i = false; var _b = false; var _u = false; var t = document.get
             }
         }
     }
+
+    var _setButtonInsetsByVar = function () {
+        var _iS = 'none';
+        var _bS = 'none';
+        var _uS = 'none';
+        if (_i) {
+            _iS = 'inset';
+        }
+        if (_b) {
+            _bS = 'inset';
+        }
+        if (_u) {
+            _uS = 'inset';
+        }
+        for (i = 0; i < document.getElementsByClassName('enable-italics-comment').length; i++) {
+            document.getElementsByClassName('enable-italics-comment');
+        }
+        document.getElementsByClassName('enable-bold-comment')[no].addEventListener('click', _toggleBold);
+        document.getElementsByClassName('enable-underline-comment')[no].addEventListener('click', _toggleUnderline);
+
+    }
+
     var _addStyleClickListeners = function (no) {
         document.getElementsByClassName('enable-italics-comment')[no].addEventListener('click', _toggleItalics);
         document.getElementsByClassName('enable-bold-comment')[no].addEventListener('click', _toggleBold);
         document.getElementsByClassName('enable-underline-comment')[no].addEventListener('click', _toggleUnderline);
+        
     }
 
 
     var o = function (po) {
-        //window.getSelection().getRangeAt(0).startOffset = po + 1;
-
-        var sel = window.getSelection()
-
-        //range.setStart(el.childNodes[0], po + 1)
+        var sel = window.getSelection();
         range.setStart(sel.getRangeAt(0).commonAncestorContainer, po + 1);
-        range.collapse(true)
-
-        sel.removeAllRanges()
-        sel.addRange(range)
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
     }
     var r = function (c, pos) {
         if (!t.nodeValue) {
@@ -71,18 +94,6 @@ javascript: var _i = false; var _b = false; var _u = false; var t = document.get
         setTimeout(o(pos), 0);
     }
 
-    var _makeAllTextAreasFullWidth = function () {
-        for (i = 0; i < document.getElementsByClassName('textarea').length; i++) {
-            document.getElementsByClassName('textarea')[i].style.width = '100%';
-
-        }
-    }
-
-    var __convertTextAreaToInput = function (element) {
-        //element.outerHTML = element.outerHTML.replaceAll('div', 'textarea');
-        //element.style.width = '100%';
-    }
-
     var __createCommentStyleButtons = function () {
         for (i = 0; i < document.getElementsByClassName('send').length; i++) {
             document.getElementsByClassName('send')[i].outerHTML = document.getElementsByClassName('send')[i].outerHTML +
@@ -90,10 +101,6 @@ javascript: var _i = false; var _b = false; var _u = false; var t = document.get
                 "<span class='highlight-background enabled enable-italics-comment'>I</span>" +
                 "<span class='highlight-background enabled enable-underline-comment'>U</span>";
             _addStyleClickListeners(i);
-            //document.getElementsByClassName('send')[i].classList.add('enabled');
-        }
-        for (i = 0; i < document.getElementsByClassName('textarea').length; i++) {
-            __convertTextAreaToInput(document.getElementsByClassName('textarea')[i]);
         }
     }
     __createCommentStyleButtons();
@@ -118,77 +125,131 @@ javascript: var _i = false; var _b = false; var _u = false; var t = document.get
         if (t.parentElement != undefined) {
             if (t.className == 'textarea' || t.parentElement.className == 'textarea') {
                 _addStylingOptionsToAllSend();
-
-
-                //__convertTextAreaToInput(t);
-                //_addStylingOptionsToAllSend();
             }
         }
     })
 
     document.addEventListener('keyup', event => {
-        var n = undefined;
-        const k = event.key;
+        var n;
         if (_i) {
-            switch (k) {
-                case "a": n = '𝘢'; break;
-                case "b": n = '𝘣'; break;
-                case "c": n = '𝘤'; break;
-                case "d": n = '𝘥'; break;
-                case "e": n = '𝘦'; break;
-                case "f": n = '𝘧'; break;
-                case "g": n = '𝘨'; break;
-                case "h": n = '𝘩'; break;
-                case "i": n = '𝘪'; break;
-                case "j": n = '𝘫'; break;
-                case "k": n = '𝘬'; break;
-                case "l": n = '𝘭'; break;
-                case "m": n = '𝘮'; break;
-                case "n": n = '𝘯'; break;
-                case "o": n = '𝘰'; break;
-                case "p": n = '𝘱'; break;
-                case "q": n = '𝘲'; break;
-                case "r": n = '𝘳'; break;
-                case "s": n = '𝘴'; break;
-                case "t": n = '𝘵'; break;
-                case "u": n = '𝘶'; break;
-                case "v": n = '𝘷'; break;
-                case "w": n = '𝘸'; break;
-                case "x": n = '𝘹'; break;
-                case "y": n = '𝘺'; break;
-                case "z": n = '𝘻'; break;
-                case "A": n = '𝘈'; break;
-                case "B": n = '𝘉'; break;
-                case "C": n = '𝘊'; break;
-                case "D": n = '𝘋'; break;
-                case "E": n = '𝘌'; break;
-                case "F": n = '𝘍'; break;
-                case "G": n = '𝘎'; break;
-                case "H": n = '𝘏'; break;
-                case "I": n = '𝘐'; break;
-                case "J": n = '𝘑'; break;
-                case "K": n = '𝘒'; break;
-                case "L": n = '𝘓'; break;
-                case "M": n = '𝘔'; break;
-                case "N": n = '𝘕'; break;
-                case "O": n = '𝘖'; break;
-                case "P": n = '𝘗'; break;
-                case "Q": n = '𝘘'; break;
-                case "R": n = '𝘙'; break;
-                case "S": n = '𝘚'; break;
-                case "T": n = '𝘛'; break;
-                case "U": n = '𝘜'; break;
-                case "V": n = '𝘝'; break;
-                case "W": n = '𝘞'; break;
-                case "X": n = '𝘟'; break;
-                case "Y": n = '𝘠'; break;
-                case "Z": n = '𝘡'; break;
+            if (!_b) {
+                switch (event.key) {
+                    case "a": n = '𝘢'; break;
+                    case "b": n = '𝘣'; break;
+                    case "c": n = '𝘤'; break;
+                    case "d": n = '𝘥'; break;
+                    case "e": n = '𝘦'; break;
+                    case "f": n = '𝘧'; break;
+                    case "g": n = '𝘨'; break;
+                    case "h": n = '𝘩'; break;
+                    case "i": n = '𝘪'; break;
+                    case "j": n = '𝘫'; break;
+                    case "k": n = '𝘬'; break;
+                    case "l": n = '𝘭'; break;
+                    case "m": n = '𝘮'; break;
+                    case "n": n = '𝘯'; break;
+                    case "o": n = '𝘰'; break;
+                    case "p": n = '𝘱'; break;
+                    case "q": n = '𝘲'; break;
+                    case "r": n = '𝘳'; break;
+                    case "s": n = '𝘴'; break;
+                    case "t": n = '𝘵'; break;
+                    case "u": n = '𝘶'; break;
+                    case "v": n = '𝘷'; break;
+                    case "w": n = '𝘸'; break;
+                    case "x": n = '𝘹'; break;
+                    case "y": n = '𝘺'; break;
+                    case "z": n = '𝘻'; break;
+                    case "A": n = '𝘈'; break;
+                    case "B": n = '𝘉'; break;
+                    case "C": n = '𝘊'; break;
+                    case "D": n = '𝘋'; break;
+                    case "E": n = '𝘌'; break;
+                    case "F": n = '𝘍'; break;
+                    case "G": n = '𝘎'; break;
+                    case "H": n = '𝘏'; break;
+                    case "I": n = '𝘐'; break;
+                    case "J": n = '𝘑'; break;
+                    case "K": n = '𝘒'; break;
+                    case "L": n = '𝘓'; break;
+                    case "M": n = '𝘔'; break;
+                    case "N": n = '𝘕'; break;
+                    case "O": n = '𝘖'; break;
+                    case "P": n = '𝘗'; break;
+                    case "Q": n = '𝘘'; break;
+                    case "R": n = '𝘙'; break;
+                    case "S": n = '𝘚'; break;
+                    case "T": n = '𝘛'; break;
+                    case "U": n = '𝘜'; break;
+                    case "V": n = '𝘝'; break;
+                    case "W": n = '𝘞'; break;
+                    case "X": n = '𝘟'; break;
+                    case "Y": n = '𝘠'; break;
+                    case "Z": n = '𝘡'; break;
 
-            }
+                }
 
+            } else if (_b) {
+                switch (event.key) {
+                    case "a": n = '𝙖'; break;
+                    case "b": n = '𝙗'; break;
+                    case "c": n = '𝙘'; break;
+                    case "d": n = '𝙙'; break;
+                    case "e": n = '𝙚'; break;
+                    case "f": n = '𝙛'; break;
+                    case "g": n = '𝙜'; break;
+                    case "h": n = '𝙝'; break;
+                    case "i": n = '𝙞'; break;
+                    case "j": n = '𝙟'; break;
+                    case "k": n = '𝙠'; break;
+                    case "l": n = '𝙡'; break;
+                    case "m": n = '𝙢'; break;
+                    case "n": n = '𝙣'; break;
+                    case "o": n = '𝙤'; break;
+                    case "p": n = '𝙥'; break;
+                    case "q": n = '𝙦'; break;
+                    case "r": n = '𝙧'; break;
+                    case "s": n = '𝙨'; break;
+                    case "t": n = '𝙩'; break;
+                    case "u": n = '𝙪'; break;
+                    case "v": n = '𝙫'; break;
+                    case "w": n = '𝙬'; break;
+                    case "x": n = '𝙭'; break;
+                    case "y": n = '𝙮'; break;
+                    case "z": n = '𝙯'; break;
+                    case "A": n = '𝘼'; break;
+                    case "B": n = '𝘽'; break;
+                    case "C": n = '𝘾'; break;
+                    case "D": n = '𝘿'; break;
+                    case "E": n = '𝙀'; break;
+                    case "F": n = '𝙁'; break;
+                    case "G": n = '𝙂'; break;
+                    case "H": n = '𝙃'; break;
+                    case "I": n = '𝙄'; break;
+                    case "J": n = '𝙅'; break;
+                    case "K": n = '𝙆'; break;
+                    case "L": n = '𝙇'; break;
+                    case "M": n = '𝙈'; break;
+                    case "N": n = '𝙉'; break;
+                    case "O": n = '𝙊'; break;
+                    case "P": n = '𝙋'; break;
+                    case "Q": n = '𝙌'; break;
+                    case "R": n = '𝙍'; break;
+                    case "S": n = '𝙎'; break;
+                    case "T": n = '𝙏'; break;
+                    case "U": n = '𝙐'; break;
+                    case "V": n = '𝙑'; break;
+                    case "W": n = '𝙒'; break;
+                    case "X": n = '𝙓'; break;
+                    case "Y": n = '𝙔'; break;
+                    case "Z": n = '𝙕'; break;
+
+                }
+
+            } 
         } 
          else if (_b) {
-            switch (k) {
+            switch (event.key) {
                 case "a": n = '𝗮'; break;
                 case "b": n = '𝗯'; break;
                 case "c": n = '𝗰'; break;
@@ -253,7 +314,7 @@ javascript: var _i = false; var _b = false; var _u = false; var t = document.get
                 case "9": n = '𝟵'; break;
             }
         } else if (_u) {
-            switch (k) {
+            switch (event.key) {
                 case "a": n = 'a͟'; break;
                 case "b": n = 'b͟'; break;
                 case "c": n = 'c͟'; break;
@@ -316,6 +377,7 @@ javascript: var _i = false; var _b = false; var _u = false; var t = document.get
                 case "7": n = '7̲'; break;
                 case "8": n = '8̲'; break;
                 case "9": n = '9̲'; break;
+                case " ": n = ' ̲'; break;
             }
 
         }
@@ -325,5 +387,6 @@ javascript: var _i = false; var _b = false; var _u = false; var t = document.get
             r(n, pos);
         }
     });
+    document.getElementsByClassName('long-btn')[0].addEventListener('click', _resetCommentValues);
 
 })();

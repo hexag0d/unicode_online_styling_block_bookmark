@@ -14,7 +14,7 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
     }
     var _toggleGothic = function () {
         _g = !_g;
-        if (_i) {
+        if (_g) {
             for (i = 0; i < document.getElementsByClassName('enable-gothic-comment').length; i++) {
                 document.getElementsByClassName('enable-gothic-comment')[i].style.outlineStyle = 'inset';
             }
@@ -89,11 +89,10 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
     var __createCommentStyleButtons = function () {
         for (i = 0; i < document.getElementsByClassName('send').length; i++) {
             document.getElementsByClassName('send')[i].outerHTML = document.getElementsByClassName('send')[i].outerHTML +
-                "<span class='highlight-background enabled enable-gothic-comment'>𝕲</span>" +
                 "<span class='highlight-background enabled enable-bold-comment'>𝗕</span>" +
                 "<span class='highlight-background enabled enable-italics-comment'>𝘐</span>" +
-                "<span class='highlight-background enabled enable-underline-comment'>U̲</span>";
-
+                "<span class='highlight-background enabled enable-underline-comment'>U̲</span>" +
+                "<span class='highlight-background enabled enable-gothic-comment'>𝕲</span>";
             _addStyleClickListeners(i);
         }
     }
@@ -104,14 +103,14 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
         for (i = 0; i < document.getElementsByClassName('send').length; i++) {
             if (!document.getElementsByClassName('control-row')[i].outerHTML.includes('-bold-')) {
                 document.getElementsByClassName('send')[i].outerHTML = document.getElementsByClassName('send')[i].outerHTML +
-                    "<span class='highlight-background enabled enable-gothic-comment'>𝕲</span>" +
                     "<span class='highlight-background enabled enable-bold-comment' >𝗕</span>" +
                     "<span class='highlight-background enabled enable-italics-comment' >𝘐</span>" +
-                    "<span class='highlight-background enabled enable-underline-comment' >U̲</span>";
+                    "<span class='highlight-background enabled enable-underline-comment' >U̲</span>" +
+                    "<span class='highlight-background enabled enable-gothic-comment'>𝕲</span>";
                 document.getElementsByClassName('enable-italics-comment')[i].addEventListener('click', _toggleItalics);
                 document.getElementsByClassName('enable-bold-comment')[i].addEventListener('click', _toggleBold);
                 document.getElementsByClassName('enable-underline-comment')[i].addEventListener('click', _toggleUnderline);
-                document.getElementsByClassName('enable-gothic-comment')[i].addEventListener('click', _toggleUnderline);
+                document.getElementsByClassName('enable-gothic-comment')[i].addEventListener('click', _toggleGothic);
             }
         }
     }

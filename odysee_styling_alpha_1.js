@@ -1,10 +1,10 @@
 ﻿
-javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t = document.getElementsByClassName('textarea')[0]; (function () {
+javascript: var g = false;var l = false; var b = false; var u = false; var t = document.getElementsByClassName('textarea')[0]; (function () {
 
     var p = 0;
     t = document.getElementById("content_description");
     var range = document.createRange();
-    //var _getFocusedNode = function () {
+    //var getFocusedNode = function () {
     //    return window.getSelection().focusNode;
     //}
     
@@ -16,12 +16,12 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
     //}
 
     var _resetCommentValues = function () {
-        _i = false; _b = false; _u = false; _g = false;
+        l = false; b = false; u = false; g = false;
 
     }
     var _toggleGothic = function () {
-        _g = !_g;
-        if (_g) {
+        g = !g;
+        if (g) {
             for (i = 0; i < document.getElementsByClassName('enable-gothic-comment').length; i++) {
                 document.getElementsByClassName('enable-gothic-comment')[i].style.borderBlockStyle = 'inset';
             }
@@ -33,8 +33,8 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
     }
 
     var _toggleItalics = function () {
-        _i = !_i;
-        if (_i) {
+        l = !l;
+        if (l) {
             for (i = 0; i < document.getElementsByClassName('enable-italics-comment').length; i++) {
                 document.getElementsByClassName('enable-italics-comment')[i].style.borderBlockStyle = 'inset';
             }
@@ -45,8 +45,8 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
         }
     }
     var _toggleBold = function () {
-        _b = !_b;
-        if (_b) {
+        b = !b;
+        if (b) {
             for (i = 0; i < document.getElementsByClassName('enable-bold-comment').length; i++) {
                 document.getElementsByClassName('enable-bold-comment')[i].style.borderBlockStyle = 'inset';
             }
@@ -57,8 +57,8 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
         }
     }
     var _toggleUnderline = function () {
-        _u = !_u;
-        if (_u) {
+        u = !u;
+        if (u) {
             for (i = 0; i < document.getElementsByClassName('enable-underline-comment').length; i++) {
                 document.getElementsByClassName('enable-underline-comment')[i].style.borderBlockStyle = 'inset';
             }
@@ -87,10 +87,10 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
     }
     var r = function (c, pos) {
         //if (!t.nodeValue) {
-        //    t = _getFocusedNode();
+        //    t = getFocusedNode();
         //}
         t.value = t.value.substring(0, pos - 1) + c + t.value.substring(pos, t.value.length);
-        setTimeout(o(pos), 0);
+        //setTimeout(o(pos), 0);
     }
 
     var __createCommentStyleButtons = function () {
@@ -127,7 +127,7 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
     }
 
     document.addEventListener('click', function () {
-        //t = _getFocusedNode();
+        //t = getFocusedNode();
         if (t.parentElement != undefined) {
             if (t.id == 'content_description') {
                 //_addStylingOptionsToAllSend();
@@ -137,8 +137,8 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
 
     document.addEventListener('keyup', event => {
         var n;
-        if (_i) {
-            if (!_b) {
+        if (l) {
+            if (!b) {
                 switch (event.key) {
                     case "a": n = '𝘢'; break;
                     case "b": n = '𝘣'; break;
@@ -195,7 +195,7 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
 
                 }
 
-            } else if (_b) {
+            } else if (b) {
                 switch (event.key) {
                     case "a": n = '𝙖'; break;
                     case "b": n = '𝙗'; break;
@@ -254,7 +254,7 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
 
             }
         }
-        else if (_b) {
+        else if (b) {
             switch (event.key) {
                 case "a": n = '𝗮'; break;
                 case "b": n = '𝗯'; break;
@@ -319,7 +319,7 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
                 case "8": n = '𝟴'; break;
                 case "9": n = '𝟵'; break;
             }
-        } else if (_u) {
+        } else if (u) {
             switch (event.key) {
                 case "a": n = 'a͟'; break;
                 case "b": n = 'b͟'; break;
@@ -386,7 +386,7 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
                 case " ": n = ' ̲'; break;
             }
 
-        } else if (_g) {
+        } else if (g) {
             switch (event.key) {
                 case "a": n = '𝖆'; break;
                 case "b": n = '𝖇'; break;
@@ -398,7 +398,7 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
                 case "h": n = '𝖍'; break;
                 case "i": n = '𝖎'; break;
                 case "j": n = '𝖏'; break;
-                case "k": n = '𝖐'; break;
+                case "k": n = 'k'; break;
                 case "l": n = '𝖑'; break;
                 case "m": n = '𝖒'; break;
                 case "n": n = '𝖓'; break;
@@ -412,7 +412,7 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
                 case "v": n = '𝖛'; break;
                 case "w": n = '𝖜'; break;
                 case "x": n = '𝖝'; break;
-                case "y": n = '𝖞'; break;
+                case "y": n = 'y'; break;
                 case "z": n = '𝖟'; break;
                 case "A": n = '𝕬'; break;
                 case "B": n = '𝕭'; break;
@@ -444,9 +444,9 @@ javascript: var _g = false;var _i = false; var _b = false; var _u = false; var t
 
         }
         p = t.selectionEnd;
-        var pos = p;
+        var z = p;
         if (n) {
-            r(n, pos);
+            r(n, z);
         }
     });
     //document.getElementsByClassName('long-btn')[0].addEventListener('click', _resetCommentValues);
